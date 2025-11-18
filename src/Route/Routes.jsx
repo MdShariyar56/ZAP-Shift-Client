@@ -8,6 +8,7 @@ export const router = createBrowserRouter([
         {
             path:"/",
             element: <Layout></Layout>,
+            hydrateFallbackElement:<div>loading....</div>,
             children:[
                 {
                   index:true,
@@ -15,8 +16,8 @@ export const router = createBrowserRouter([
                 },
                 {
                   path:'/covarage',
-                  element:<Covarage></Covarage>
-                  
+                  element:<Covarage></Covarage>,
+                  loader: () => fetch('/ServiceCenter.json').then(res => res.json())
                 }
             ]
         }
